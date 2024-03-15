@@ -3,13 +3,17 @@ package network
 import "github.com/gin-gonic/gin"
 
 type Network struct {
-	engin *gin.Engine
+	engin  *gin.Engine
+	router *Router
 }
 
 func NewNetwork() *Network {
+	engin := gin.Default()
 	n := &Network{
-		engin: gin.Default(),
+		engin:  engin,
+		router: NewRouter(engin),
 	}
+
 	return n
 }
 
